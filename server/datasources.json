@@ -1,0 +1,6 @@
+{
+  "db": {
+    "connector": "loopback-connector-mongodb",
+    "url": "mongodb://{username}:{password}@ds121599.mlab.com:21599/jojobackend"
+  }
+}
