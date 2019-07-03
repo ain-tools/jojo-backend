@@ -742,7 +742,7 @@ module.exports = function (Gameroom) {
                 })
             })
         }
-
+        next();
     });
 
     //sockets
