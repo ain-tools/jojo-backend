@@ -486,10 +486,10 @@ module.exports = function (Gameroom) {
                                                 }
                                             }
                                         }
-                                    }
+                                    } 
                                     if (cardIsLaidDown) {
                                         if (ctx.args.data.target != JSON.parse(gameroomInfo[0].player2).username && ctx.args.data.target != JSON.parse(gameroomInfo[0].player1).username) {
-                                            lastPlayedAction = ["attackWithCard", ctx.args.data.target , ctx.args.data.targetSide , player[0].username];
+                                            lastPlayedAction = ["attackWithCard", ctx.args.data.target , ctx.args.data.targetSide , player[0].username, ctx.args.data.selectedCard];
                                             if (ctx.args.data.targetSide == "ennemy") {
                                                 for (let i = 0; i < gameroomInfo[0].laidCardsPlayer2.length; i++) {
                                                     if (ctx.args.data.target == gameroomInfo[0].laidCardsPlayer2[i].nameOfCard) {
@@ -520,7 +520,7 @@ module.exports = function (Gameroom) {
                                                 }
                                             }
                                         } else if (ctx.args.data.target == JSON.parse(gameroomInfo[0].player1).username) {
-                                            lastPlayedAction = ["attackWithCard", ctx.args.data.target , ctx.args.data.targetSide , player[0].username];
+                                            lastPlayedAction = ["attackWithCard", ctx.args.data.target , ctx.args.data.targetSide , player[0].username,ctx.args.data.selectedCard];
                                             let updatedPlayer1HP = gameroomInfo[0].hpOfPlayer1;
                                             updatedPlayer1HP = updatedPlayer1HP + cardSelected.attack;
                                             gameroomInfo[0].updateAttributes({ hpOfPlayer1: updatedPlayer1HP });
@@ -530,7 +530,7 @@ module.exports = function (Gameroom) {
                                             usedCardsPlayer1.push(cardSelected);
                                             gameroomInfo[0].updateAttributes({ usedCardsPlayer1: usedCardsPlayer1 });
                                         } else if (ctx.args.data.target == JSON.parse(gameroomInfo[0].player2).username) {
-                                            lastPlayedAction = ["attackWithCard", ctx.args.data.target , ctx.args.data.targetSide , player[0].username];
+                                            lastPlayedAction = ["attackWithCard", ctx.args.data.target , ctx.args.data.targetSide , player[0].username,ctx.args.data.selectedCard];
                                             let updatedPlayer2HP = gameroomInfo[0].hpOfPlayer2;
                                             updatedPlayer2HP = updatedPlayer2HP + cardSelected.attack;
                                             gameroomInfo[0].updateAttributes({ hpOfPlayer2: updatedPlayer2HP });
@@ -566,7 +566,7 @@ module.exports = function (Gameroom) {
                                     //checks if card is laid down
                                     if (cardIsLaidDown) {
                                         if (ctx.args.data.target != JSON.parse(gameroomInfo[0].player2).username && ctx.args.data.target != JSON.parse(gameroomInfo[0].player1).username) {
-                                            lastPlayedAction = ["attackWithCard", ctx.args.data.target , ctx.args.data.targetSide , player[0].username];
+                                            lastPlayedAction = ["attackWithCard", ctx.args.data.target , ctx.args.data.targetSide , player[0].username,ctx.args.data.selectedCard];
                                             if (ctx.args.data.targetSide == "ennemy") {
                                                 for (let i = 0; i < gameroomInfo[0].laidCardsPlayer1.length; i++) {
                                                     if (ctx.args.data.target == gameroomInfo[0].laidCardsPlayer1[i].nameOfCard) {
@@ -597,7 +597,7 @@ module.exports = function (Gameroom) {
                                                 }
                                             }
                                         } else if (ctx.args.data.target == JSON.parse(gameroomInfo[0].player1).username) {
-                                            lastPlayedAction = ["attackWithCard", ctx.args.data.target , ctx.args.data.targetSide , player[0].username];
+                                            lastPlayedAction = ["attackWithCard", ctx.args.data.target , ctx.args.data.targetSide , player[0].username,ctx.args.data.selectedCard];
                                             let updatedPlayer1HP = gameroomInfo[0].hpOfPlayer1;
                                             updatedPlayer1HP = updatedPlayer1HP + cardSelected2.attack;
                                             gameroomInfo[0].updateAttributes({ hpOfPlayer1: updatedPlayer1HP });
@@ -607,7 +607,7 @@ module.exports = function (Gameroom) {
                                             usedCardsPlayer2.push(cardSelected2);
                                             gameroomInfo[0].updateAttributes({ usedCardsPlayer2: usedCardsPlayer2 });
                                         } else if (ctx.args.data.target == JSON.parse(gameroomInfo[0].player2).username) {
-                                            lastPlayedAction = ["attackWithCard", ctx.args.data.target , ctx.args.data.targetSide , player[0].username];
+                                            lastPlayedAction = ["attackWithCard", ctx.args.data.target , ctx.args.data.targetSide , player[0].username,ctx.args.data.selectedCard];
                                             let updatedPlayer2HP = gameroomInfo[0].hpOfPlayer2;
                                             updatedPlayer2HP = updatedPlayer2HP + cardSelected2.attack;
                                             gameroomInfo[0].updateAttributes({ hpOfPlayer2: updatedPlayer2HP });
@@ -699,6 +699,8 @@ module.exports = function (Gameroom) {
                             "maxManaOfPlayer": heroHelper.getHero(gameroomInfo[0].heroOfPlayer1).mana,
                             "maxManaOfEnnemy": heroHelper.getHero(gameroomInfo[0].heroOfPlayer2).mana,
                             "abilityOfPlayer": heroHelper.getHero(gameroomInfo[0].heroOfPlayer1).ability,
+                            "costOfManaAbility": heroHelper.getHero(gameroomInfo[0].heroOfPlayer1).costOfManaSpell,
+                            "descOfAbility": heroHelper.getHero(gameroomInfo[0].heroOfPlayer1).abilityDesc,
                             "nameOfPlayer": JSON.parse(gameroomInfo[0].player1).username,
                             "nameOfEnnemy": JSON.parse(gameroomInfo[0].player2).username,
                             "theWinner": gameroomInfo[0].theWinner
@@ -720,6 +722,8 @@ module.exports = function (Gameroom) {
                             "maxManaOfPlayer": heroHelper.getHero(gameroomInfo[0].heroOfPlayer2).mana,
                             "maxManaOfEnnemy": heroHelper.getHero(gameroomInfo[0].heroOfPlayer1).mana,
                             "abilityOfPlayer": heroHelper.getHero(gameroomInfo[0].heroOfPlayer2).ability,
+                            "costOfManaAbility": heroHelper.getHero(gameroomInfo[0].heroOfPlayer2).costOfManaSpell,
+                            "descOfAbility": heroHelper.getHero(gameroomInfo[0].heroOfPlayer2).abilityDesc,
                             "nameOfPlayer": JSON.parse(gameroomInfo[0].player2).username,
                             "nameOfEnnemy": JSON.parse(gameroomInfo[0].player1).username,
                             "theWinner": gameroomInfo[0].theWinner
@@ -807,6 +811,8 @@ module.exports = function (Gameroom) {
                             "maxManaOfPlayer": heroHelper.getHero(gameroom[0].heroOfPlayer1).mana,
                             "maxManaOfEnnemy": heroHelper.getHero(gameroom[0].heroOfPlayer2).mana,
                             "abilityOfPlayer": heroHelper.getHero(gameroom[0].heroOfPlayer1).ability,
+                            "costOfManaAbility": heroHelper.getHero(gameroom[0].heroOfPlayer1).costOfManaSpell,
+                            "descOfAbility": heroHelper.getHero(gameroom[0].heroOfPlayer1).abilityDesc,
                             "nameOfPlayer": JSON.parse(gameroom[0].player1).username,
                             "nameOfEnnemy": JSON.parse(gameroom[0].player2).username,
                             "theWinner": gameroom[0].theWinner
@@ -829,6 +835,8 @@ module.exports = function (Gameroom) {
                             "maxManaOfPlayer": heroHelper.getHero(gameroom[0].heroOfPlayer2).mana,
                             "maxManaOfEnnemy": heroHelper.getHero(gameroom[0].heroOfPlayer1).mana,
                             "abilityOfPlayer": heroHelper.getHero(gameroom[0].heroOfPlayer2).ability,
+                            "costOfManaAbility": heroHelper.getHero(gameroom[0].heroOfPlayer2).costOfManaSpell,
+                            "descOfAbility": heroHelper.getHero(gameroom[0].heroOfPlayer2).abilityDesc,
                             "nameOfPlayer": JSON.parse(gameroom[0].player2).username,
                             "nameOfEnnemy": JSON.parse(gameroom[0].player1).username,
                             "theWinner": gameroom[0].theWinner

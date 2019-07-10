@@ -7,7 +7,7 @@ let arrayOfHeroOBJs = [
     { name: "avdol", fullName:"Avdol Muhammad", ability:"Fireball", abilityDesc: "Burn your foes to a crisp with a fireball (15 dmg).",hp: 150, mana: 180,costOfManaSpell: 55  },
     { name: "polnareff", fullName: "Jean Pierre Polnareff", ability:"Quick Stab", abilityDesc: "Stab your target quickly (7 dmg).",hp: 175, mana: 155,costOfManaSpell: 30  },
     { name: "koichi", fullName:"Koichi Hirose",ability:"Pumped up!", abilityDesc: "Heal your target by motivating them (15 heal).",hp: 140, mana: 165,costOfManaSpell: 55  },
-    { name: "rohan", fullName:"Rohan Kishibe", ability:"Written Command", abilityDesc: "Command a card to fight by healing it.(7 heal)",hp: 145, mana: 160,costOfManaSpell: 30  },
+    { name: "rohan", fullName:"Rohan Kishibe", ability:"Written Command", abilityDesc: "Command a target to heal itself.(7 heal)",hp: 145, mana: 160,costOfManaSpell: 30  },
     { name: "okuyasu", fullName:"Okuyasu Nijimura", ability:"Void Hand", abilityDesc: "Deal a massive amount of damage (20 dmg).",hp: 170, mana: 160,costOfManaSpell: 50  },
     { name: "josuke", fullName:"Josuke Higashikata", ability:" Repair", abilityDesc: "Heal your target (20 heal).",hp: 165, mana: 140 ,costOfManaSpell: 70  }
 ]
